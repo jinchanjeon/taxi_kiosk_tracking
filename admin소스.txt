@@ -1,0 +1,135 @@
+<template>
+    <div class="box">
+      <h1 @click="admin"> 관리자 모드</h1>
+    <div class="admin">
+        <div class="button-container">
+        <button class="mobile" @click="mobile">어플</button>
+        <button class="kiosk" @click="kiosk">키오스크</button>
+      </div>
+    </div>
+    
+    <div class="admin">
+      <div class="coordinate-input">
+        <h3>키오스크 좌표 입력:</h3>
+        <div class="input-container">
+          <input placeholder="위도" v-model="kiosk_lat" />
+          <input placeholder="경도" v-model="kiosk_lng" />
+        </div>
+      </div>
+    </div>
+    </div>
+</template>
+
+<!-- 
+  위도 경도 값 firebase에 저장
+  저장된 값 불러와서 마커 
+
+-->
+<script>
+
+export default {
+    methods: {
+        mobile() {
+            console.log('앱으로 접속');
+            this.$router.push('/toapp');
+        },
+        kiosk() {
+            console.log('키오스크로 접속');
+            this.$router.push('/');
+        }
+    }
+}
+</script>
+
+<style>
+
+input{
+width:180px;
+height:40px;
+font-size:18px;
+margin: 5px; 
+}
+.coordinate-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin {
+  /* background-color: rgb(120, 59, 59);  */
+  width: 100%; /* Full width */
+  height: 150px;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  /* padding-left: 50px;
+  padding-right: 50px; */
+}
+
+.button-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.mobile {
+  width: 150px;
+  height: 80px;
+  font-size: 1.3em;
+  border-radius: 25px;
+  background: none;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 1em 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s;
+  font-weight: bold;
+  margin-right: 70px;
+  width: fit-content;
+  display: inline-block;
+}
+.mobile:hover {
+    /* background-color:#ffeb00; ;
+    transition: 0.5s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+
+    border-color: none;
+    background-color: rgb(252,211,69);
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(84, 84, 84);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.kiosk {
+  width: 150px;
+  height: 80px;
+  border-radius: 25px;
+  background: none;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 1em 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+.kiosk:hover {
+    /* background-color:#ffeb00; ;
+    transition: 0.5s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+
+    border-color: none;
+    background-color: rgb(252,211,69);
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(84, 84, 84);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  cursor:pointer;
+}
+</style>
